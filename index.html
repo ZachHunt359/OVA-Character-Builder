@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <title>OVA Dice Roller</title>
+    <meta name="title" content="OVA Dice Roller">
+    <meta name="description" content="A simple dice roller for the OVA TTRPG system">
+    <meta name="keywords" content="OVA, dice, roller">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    <meta name="author" content="Zach Hunt">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	  <link rel="stylesheet" href="css/main.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="js/OVADiceRoller.js"></script>
+  </head>
+
+  <body>
+    <h1>Dice Roller</h1>
+    <label for="bonuses">Bonuses:</label>
+    <div class="number-input">
+      <button class="spinner decrement">-</button>
+      <input type="text" inputmode="numeric" pattern="[0-9]*" id="bonuses" value="0" oninput="updateNumDice()">
+      <button class="spinner increment">+</button>
+    </div>
+    <br>
+    <label for="numDice">Number of Dice:</label>
+    <span id="numDice">2</span>
+    <button type="button" onclick="rollDice()">Roll</button>
+    <br>
+    <label for="result">Roll Result:</label><br>
+    <div id="resultDiv">
+
+    </div>
+    <button id="copyButton">Copy to Clipboard</button>
+  </body>
+
+</html>
