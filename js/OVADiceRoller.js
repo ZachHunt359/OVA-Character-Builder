@@ -309,7 +309,16 @@ $(document).ready(function() {
   })
   .catch(error => console.error('Error loading JSON:', error));
 
+  var weaknessData = []; // Store ability data here
 
+  // Load the JSON data from abilities.json
+  // Assuming the JSON file is named abilities.json
+  fetch('json/weaknesses.json')
+  .then(response => response.json())
+  .then(data => {
+    weaknessData = data;
+  })
+  .catch(error => console.error('Error loading JSON:', error));
 
   characterData.name = "Riley Moore"
   addAbility("Healer", 3);
