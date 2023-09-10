@@ -316,7 +316,7 @@ var abilityData = []; // Store ability data here
     weaknessData = data;
   })
   .catch(error => console.error('Error loading JSON:', error));
-  
+
 $(document).ready(function() {
 
   
@@ -441,43 +441,50 @@ function printCharacterData() {
 }
 
 function createAddForm(type) {
-  // Create a form for adding abilities or weaknesses
-  var form = $("<form class='add-form'></form>");
+  // Create the modal element
+  var modal = $("<div class='modal'></div>");
 
-  // Create a dropdown for selecting the name
-  var nameDropdown = $("<select class='name-dropdown'></select>");
-  var dataToUse = (type === "ability") ? abilityData : weaknessData;
+  // Create the modal content
+  var content = $("<div class='modal-content'></div>");
 
-  // Populate the dropdown with options based on the selected type
-  dataToUse.forEach(function(item) {
-    var option = $("<option></option>")
-      .text(item.name)
-      .data("description", item.description); // Store description as data
-    nameDropdown.append(option);
-  });
+  // Create the dropdown for abilities or weaknesses (replace this with your actual dropdown creation)
+  var dropdown = $("<select></select>");
 
-  // Create an input for selecting the level
-  var levelInput = $("<input type='number' class='level-input' placeholder='Level'>");
+  // Create the description field (replace this with your actual description field creation)
+  var descriptionField = $("<textarea></textarea>");
 
-  // Create a description display area
-  var descriptionDisplay = $("<p class='description-display'></p>");
+  // Create the level field (replace this with your actual level field creation)
+  var levelField = $("<input type='text' placeholder='Level'>");
 
-  // Create a submit button
-  var addButton = $("<button type='button' class='add-button-form'>Add</button>");
+  // Create the "Add" button
+  var addButton = $("<button class='add-button-modal'>Add</button>");
 
-  // Append the form elements
-  form.append(nameDropdown);
-  form.append(levelInput);
-  form.append(descriptionDisplay); // Add description display
-  form.append(addButton);
+  // Append the dropdown, description field, level field, and "Add" button to the modal content
+  content.append(dropdown);
+  content.append(descriptionField);
+  content.append(levelField);
+  content.append(addButton);
 
-  // Append the form to the appropriate list
-  $(".ability-list, .weakness-list").append(form);
+  // Append the modal content to the modal
+  modal.append(content);
 
-  // Update the description display when a name is selected
-  nameDropdown.on("change", function() {
-    var selectedOption = $(this).find("option:selected");
-    var description = selectedOption.data("description");
-    descriptionDisplay.text(description);
+  // Append the modal to the body
+  $("body").append(modal);
+
+  // Open the modal when the form is created
+  modal.show();
+
+  // Add click event to the "Add" button to handle adding the selected ability/weakness to characterData
+  addButton.click(function() {
+    // Handle adding the selected ability/weakness to characterData here
+    var selectedAbilityOrWeakness = dropdown.val();
+    var level = levelField.val();
+    var description = descriptionField.val();
+
+    // Add the selected data to characterData based on the 'type' (ability or weakness)
+    // Implement this logic based on your characterData structure
+
+    // Close the modal
+    modal.hide();
   });
 }
