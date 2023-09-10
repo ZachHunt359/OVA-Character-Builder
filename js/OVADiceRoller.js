@@ -441,6 +441,9 @@ function printCharacterData() {
 }
 
 function createAddForm(type) {
+  // Get the appropriate data based on the type (ability or weakness)
+  var data = (type === "ability") ? abilityData : weaknessData;
+
   // Create the modal element
   var modal = $("<div class='modal'></div>");
 
@@ -449,6 +452,11 @@ function createAddForm(type) {
 
   // Create the dropdown for abilities or weaknesses (replace this with your actual dropdown creation)
   var dropdown = $("<select></select>");
+
+  // Populate the select element with options from the data
+  data.forEach(function(item) {
+    dropdown.append("<option value='" + item.name + "'>" + item.name + "</option>");
+  });
 
   // Create the description field (replace this with your actual description field creation)
   var descriptionField = $("<textarea></textarea>");
