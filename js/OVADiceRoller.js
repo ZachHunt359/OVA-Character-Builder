@@ -295,10 +295,7 @@ function updateInterface() {
   $("ul, h3").disableSelection();
 }
 
-
-$(document).ready(function() {
-
-  var abilityData = []; // Store ability data here
+var abilityData = []; // Store ability data here
 
   // Load the JSON data from abilities.json
   // Assuming the JSON file is named abilities.json
@@ -319,6 +316,10 @@ $(document).ready(function() {
     weaknessData = data;
   })
   .catch(error => console.error('Error loading JSON:', error));
+  
+$(document).ready(function() {
+
+  
 
   characterData.name = "Riley Moore"
   addAbility("Healer", 3);
