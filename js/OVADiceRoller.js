@@ -444,55 +444,92 @@ function createAddForm(type) {
   // Get the appropriate data based on the type (ability or weakness)
   var data = (type === "ability") ? abilityData : weaknessData;
 
-  // Create the modal element
-  var modal = $("<div class='modal'></div>");
+  // Create the modal container
+  var modal = document.createElement("div");
+  modal.className = "modal";
 
-  // Create the modal content
-  var content = $("<div class='modal-content'></div>");
+  // Create the modal content container
+  var modalContent = document.createElement("div");
+  modalContent.className = "modal-content";
 
-  // Create the dropdown for abilities or weaknesses (replace this with your actual dropdown creation)
-  var dropdown = $("<select></select>");
+  // Create the left side (ability select and description)
+  var leftDiv = document.createElement("div");
+  leftDiv.className = "modal-left";
+
+  // Create the ability select dropdown
+  var abilitySelect = document.createElement("select");
+  abilitySelect.id = "ability-select";
 
   // Populate the select element with options from the data
   data.forEach(function(item) {
-    dropdown.append("<option value='" + item.name + "'>" + item.name + "</option>");
+    var option = document.createElement("option");
+    option.value = item.name;
+    option.text = item.name;
+    abilitySelect.appendChild(option);
   });
 
-  // Create the description field (replace this with your actual description field creation)
-  var descriptionField = $("<textarea></textarea>");
+  // Create the ability description paragraph
+  var abilityDescription = document.createElement("p");
+  abilityDescription.id = "ability-description";
 
-  // Create the level field (replace this with your actual level field creation)
-  var levelField = $("<input type='text' placeholder='Level'>");
+  // Append the ability select and description to the left side
+  leftDiv.appendChild(abilitySelect);
+  leftDiv.appendChild(abilityDescription);
 
-  // Create the "Add" button
-  var addButton = $("<button class='add-button-modal'>Add</button>");
+  // Create the right side (level input and Add button)
+  var rightDiv = document.createElement("div");
+  rightDiv.className = "modal-right";
 
-  // Append the dropdown, description field, level field, and "Add" button to the modal content
-  content.append(dropdown);
-  content.append(descriptionField);
-  content.append(levelField);
-  content.append(addButton);
+  // Create the level input
+  var levelInput = document.createElement("input");
+  levelInput.type = "number";
+  levelInput.id = "level-input";
+  levelInput.placeholder = "Level";
 
-  // Append the modal content to the modal
-  modal.append(content);
+  // Create the Add button
+  var addButton = document.createElement("button");
+  addButton.id = "add-button";
+  addButton.textContent = "Add";
 
-  // Append the modal to the body
-  $("body").append(modal);
+  // Append the level input and Add button to the right side
+  rightDiv.appendChild(levelInput);
+  rightDiv.appendChild(addButton);
 
-  // Open the modal when the form is created
-  modal.show();
+  // Append the left and right sides to the modal content
+  modalContent.appendChild(leftDiv);
+  modalContent.appendChild(rightDiv);
 
-  // Add click event to the "Add" button to handle adding the selected ability/weakness to characterData
-  addButton.click(function() {
-    // Handle adding the selected ability/weakness to characterData here
-    var selectedAbilityOrWeakness = dropdown.val();
-    var level = levelField.val();
-    var description = descriptionField.val();
+  // Append the modal content to the modal container
+  modal.appendChild(modalContent);
 
-    // Add the selected data to characterData based on the 'type' (ability or weakness)
-    // Implement this logic based on your characterData structure
+  // Append the modal container to the document body
+  document.body.appendChild(modal);
 
-    // Close the modal
-    modal.hide();
+  // Display the modal
+  modal.style.display = "block";
+
+  // Handle the Add button click event to add the selected ability/weakness
+  addButton.addEventListener("click", function() {
+    // Get the selected ability from the dropdown
+    var selectedAbility = abilitySelect.options[abilitySelect.selectedIndex].value;
+
+    // Get the level from the input
+    var level = levelInput.value;
+
+    // Check if the selected ability and level are valid
+    if (selectedAbility && level) {
+      // Add the selected ability/weakness and level to characterData
+      if (type === "ability") {
+        addAbility(selectedAbility, parseInt(level));
+      } else if (type === "weakness") {
+        addWeakness(selectedAbility, parseInt(level));
+      }
+
+      // Close the modal by hiding it
+      modal.style.display = "none";
+
+      // Update the interface to reflect the changes
+      updateInterface();
+    }
   });
 }

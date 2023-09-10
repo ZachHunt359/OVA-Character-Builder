@@ -63,12 +63,14 @@ li {
   background-color: #f0ad4e;
 }
 
+/*
 .ability,
 .weakness,
 .perk,
 .flaw {
   contentEditable: true;
 }
+*/
 
 ul.ability-list,
 ul.weakness-list {
@@ -95,6 +97,10 @@ ul.weakness-list {
   border: 1px solid #888;
   width: 50%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.modal-content > * {
+  float: left;
 }
 
 /* Close button style */
