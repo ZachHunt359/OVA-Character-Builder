@@ -3,27 +3,26 @@
 
   <head>
     <meta charset="utf-8">
-    <title>OVA Dice Roller</title>
-    <meta name="title" content="OVA Dice Roller">
+    <title>OVA Character Creator</title>
+    <meta name="title" content="OVA Character Creator">
     <meta name="description" content="A simple dice roller for the OVA TTRPG system">
     <meta name="keywords" content="OVA, dice, roller">
     <meta name="robots" content="index, follow">
     <meta name="language" content="English">
     <meta name="author" content="Zach Hunt">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	  <link rel="stylesheet" href="css/main.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="css/main.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="js/OVADiceRoller.js"></script>
+
   </head>
 
   <body>
-    <h1>Dice Roller</h1>
+    <h1>OVA Character Builder</h1>
     <label for="bonuses">Bonuses:</label>
-    <div class="number-input">
-      <button class="spinner decrement">-</button>
-      <input type="text" inputmode="numeric" pattern="[0-9]*" id="bonuses" value="0" oninput="updateNumDice()">
-      <button class="spinner increment">+</button>
-    </div>
+    <input type="number" id="bonuses" value="0" oninput="updateNumDice()">
     <br>
     <label for="numDice">Number of Dice:</label>
     <span id="numDice">2</span>
@@ -34,6 +33,35 @@
 
     </div>
     <button id="copyButton">Copy to Clipboard</button>
+
+    <div class="list-container">
+      <ul class="ability-list">
+        <h3>Abilities:</h3>
+        <li class="ability" data-level="3" data-name="Teleport">
+          <button class="add-perk-button">Add Perk</button>
+          <button class="add-flaw-button">Add Flaw</button>
+          <ul class="perk-list">
+            <li class="perk" data-endurance="10" data-name="Area Effect"></li>
+            <li class="flaw" data-endurance="-5" data-name="Elaborate Gestures"></li>
+          </ul>
+        </li>
+
+        <li class="ability" data-level="3" data-name="Strong"></li>
+
+        <li class="add-item"><button class="add-button">+</button></li>
+      </ul>
+    </div>
+    <div class="list-container">
+      <ul class="weakness-list">
+        <h3>Weaknesses:</h3>
+        <li class="weakness">Vulnerability to Magic</li>
+        <li class="weakness">Nosebleeder</li>
+        <li class="add-item"><button class="add-button">+</button></li>
+      </ul>
+    </div>
+
+    <button onclick="printCharacterData()">Print to console</button>
+
   </body>
 
 </html>

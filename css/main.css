@@ -1,62 +1,76 @@
 body {
-    background-color: black;
-    color: white;
-  }
-  
-  span#numDice,
-  input[type="number"] {
-    font-size: 20px;
-    text-align: center;
-  }
-  
-  input[type="number"] {
-    width: 75px;
-    margin-bottom: 10px;
-  }
-  
-  div#resultDiv {
-    border: 1px solid white;
-    margin: 5px 0px;
-    padding: 5px 5px;
-    max-width: 400px;
-    white-space: pre-line;/* Handling line breaks in output */
-  }
-  
-  span.winningDice {
-    font-weight: bold;
-    font-size: 150%;
-    color: Lime;
-  }
-
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+  background-color: black;
+  color: white;
 }
 
-.number-input {
-  display: flex;
+span#numDice,
+input[type="number"] {
+  font-size: 20px;
+  text-align: center;
 }
 
-input {
-  width: 40px;
-  border: solid 1px lightgrey;
-  border-radius: 0;
-  text-align: center
+input[type="number"] {
+  width: 75px;
+  margin-bottom: 10px;
 }
 
-.spinner {
-  border: solid 1px lightgrey;
+div#resultDiv {
+  border: 1px solid white;
+  margin: 5px 0px;
+  padding: 5px 5px;
+  max-width: 400px;
+  white-space: pre-line;
+  /* Handling line breaks in output */
 }
 
-.spinner:hover {
-  background: lightgrey;
+span.winningDice {
+  font-weight: bold;
+  font-size: 150%;
+  color: Lime;
 }
 
-.spinner:first-child {
-  border-radius: 3px 0 0 3px;
+.list-container {
+  margin: 10px;
 }
 
-.spinner:last-child {
-  border-radius: 0 3px 3px 0;
+ul {
+  list-style-type: none;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: gray;
+}
+
+li {
+  margin: 5px;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.ability {
+  background-color: #5cb85c;
+}
+
+.weakness {
+  background-color: #d9534f;
+}
+
+.perk {
+  background-color: #5bc0de;
+}
+
+.flaw {
+  background-color: #f0ad4e;
+}
+
+.ability,
+.weakness,
+.perk,
+.flaw {
+  contentEditable: true;
+}
+
+ul.ability-list,
+ul.weakness-list {
+  float: left;
 }
