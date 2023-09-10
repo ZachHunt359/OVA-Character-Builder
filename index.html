@@ -60,6 +60,22 @@
       </ul>
     </div>
 
+    <div id="addModal" class="modal">
+      <div class="modal-content">
+        <span class="close" id="closeModal">&times;</span>
+        <h2>Add Ability or Weakness</h2>
+        <label for="selectAbility">Select Ability or Weakness:</label>
+        <select id="selectAbility">
+          <!-- Options will be dynamically populated with data -->
+        </select>
+        <p id="abilityDescription">Description: </p>
+        <label for="selectLevel">Select Level:</label>
+        <input type="number" id="selectLevel" min="1" max="10" value="1">
+        <button id="addButton">Add</button>
+      </div>
+    </div>
+    
+
     <button onclick="printCharacterData()">Print to console</button>
 
   </body>

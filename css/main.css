@@ -74,3 +74,41 @@ ul.ability-list,
 ul.weakness-list {
   float: left;
 }
+
+/* Modal styles */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.7); /* Overlay background */
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 50%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* Close button style */
+.close {
+  position: absolute;
+  right: 15px;
+  top: 5px;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+/* Add more styles as needed */
+
+/* Optional: Hover effect on close button */
+.close:hover {
+  color: red;
+}
